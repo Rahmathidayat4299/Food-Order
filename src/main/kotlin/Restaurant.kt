@@ -11,7 +11,7 @@ class Restaurant(private val menuFood: List<ItemFood>) : Order {
         menuFood.forEachIndexed { index, itemFood ->
             println(
                 """
-                ${index + 1} . ${itemFood.name} , ${itemFood.price}
+                ${index + 1} . ${itemFood.name} =  Rp.${itemFood.price}/portion
             """.trimIndent()
             )
         }
@@ -30,9 +30,9 @@ class Restaurant(private val menuFood: List<ItemFood>) : Order {
                     foodMenu = menuResult
                     println(
                         """
-                    ${menuResult.id},
-                    ${menuResult.name},
-                    ${menuResult.price},
+                    Your Choice ${menuResult.id},
+                    Name Menu : ${menuResult.name},
+                    Price : Rp.${menuResult.price},
                 """.trimIndent()
                     )
                     return menuResult
@@ -51,7 +51,7 @@ class Restaurant(private val menuFood: List<ItemFood>) : Order {
         val payment = readlnOrNull()?.trim()?.toIntOrNull()
         val foodPrice = foodMenu?.price
         if (payment != null && foodPrice != null && payment >= foodPrice) {
-            println("payment succes")
+            println("Payment succes")
         } else {
             println("Invalid payment amount. Please input a valid amount.")
             insertPayment()
